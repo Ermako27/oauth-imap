@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MailDeal</title>
+<script type="text/javascript" src="lib.js"></script>
+</head>
+<body>
+        <hr>
+        <a href="#" id="code">&#x441;&#x434;&#x435;&#x43B;&#x430;&#x442;&#x44C; &#x437;&#x430;&#x43F;&#x440;&#x43E;&#x441; &#x437;&#x430; &#x43A;&#x43E;&#x434;&#x43E;&#x43C;</a>
+        <br>
+        <a href="#" id="setcode">&#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x438;&#x442;&#x44C; &#x43A;&#x43E;&#x434;</a>
+        <br>
+        <a href="#" id="token">&#x43F;&#x43E;&#x43B;&#x443;&#x447;&#x438;&#x442;&#x44C; &#x442;&#x43E;&#x43A;&#x435;&#x43D;</a>
+        <br>
+        <div class="mailru-login-button" data-ui="login_as userpic" data-type="login" style="width: 300px; height: 48px;"></div>
+        <script src="https://oauth.mail.ru/sdk/v0.14.0/oauth.js"></script>
+        <script>
+            MR.init({
+                clientId: 'd107a66dd260467fa71c9b863b196e7c',
+                onlogin: function (state) {
+                    if (state.user) {
+                        console.info('MR.login:', state);
+                    }
+                },
+                onlogout: function () {
+                    console.info('MR.logout');
+                }
+            });
+
+            var lib = new Lib();
+
+            var getCode = document.getElementById('code');
+            getCode.onclick = lib.fetchAccessCode;
+
+            var setcode = document.getElementById('setcode');
+            setcode.onclick = lib.getAccesCodeFromUrl;
+
+            var gettoken = document.getElementById('token');
+            gettoken.onclick = lib.getToken;
+        </script>
+    
+
+</body></html>
